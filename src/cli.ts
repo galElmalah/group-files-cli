@@ -8,5 +8,6 @@ commander.action(async () => {
     await groupFilesByFileEndings(process.cwd())
   } catch (e) {
     console.log('Hooo shit!')
+    console.log(e)
   }
 }).parse(process.argv)

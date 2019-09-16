@@ -3,12 +3,11 @@ import * as path from 'path';
 import { promisify } from 'util';
 
 const readDir = promisify(fs.readdir);
-const isExists = promisify(fs.exists)
-const createDir = promisify(fs.mkdir);
 
-const createDirIfNeeded = async (path) => {
+
+const createDirIfNeeded = (path) => {
   if (!fs.existsSync(path)) {
-    await createDir(path)
+    fs.mkdirSync(path)
   }
 };
 const move = promisify(fs.rename);

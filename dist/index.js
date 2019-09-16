@@ -12,14 +12,11 @@ const fs = require("fs");
 const path = require("path");
 const util_1 = require("util");
 const readDir = util_1.promisify(fs.readdir);
-const isExists = util_1.promisify(fs.exists);
-const createDir = util_1.promisify(fs.mkdir);
-const createDirIfNeeded = (path) => __awaiter(this, void 0, void 0, function* () {
-    console.log(fs.existsSync(path), path);
+const createDirIfNeeded = (path) => {
     if (!fs.existsSync(path)) {
-        yield createDir(path);
+        fs.mkdirSync(path);
     }
-});
+};
 const move = util_1.promisify(fs.rename);
 const getFileEnding = (fileName) => fileName.split('.').pop();
 const createFolders = (_path, folders) => {

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonJs",
+    "target": "es2015",
+    "outDir": "dist/",
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "declaration": true,
+    "lib": [
+      "es6"
+    ],
+    "skipLibCheck": true
+  },
+  "files": [
+    "./src/index.ts",
+    "./src/cli.ts"
+  ]
+}

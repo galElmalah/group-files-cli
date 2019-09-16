@@ -3,13 +3,20 @@ import * as path from 'path';
 import { promisify } from 'util';
 
 const readDir = promisify(fs.readdir);
+const isExists = promisify(fs.exists)
 const createDir = promisify(fs.mkdir);
+
+const createDirIfNeeded = async (path) => {
+  if (!fs.existsSync(path)) {
+    await createDir(path)
+  }
+};
 const move = promisify(fs.rename);
 
 const getFileEnding = (fileName): string => fileName.split('.').pop();
 
 const createFolders = (_path, folders): Promise<void>[] => {
-  return folders.map(folder => createDir(path.join(_path, folder)))
+  return folders.map(folder => createDirIfNeeded(path.join(_path, folder)))
 }
 
 export const groupFilesByFileEndings = async (pathToFolder: string): Promise<void> => {
